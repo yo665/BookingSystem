@@ -1,0 +1,204 @@
+﻿@page "/"
+
+@inject BookingSystem.Data.BookingSystemDbContext DB
+@using BookingSystem.Models
+@using System.ComponentModel.DataAnnotations
+@using BookingSystem.Models.Enums
+@inject NavigationManager NavigationManager
+
+<PageTitle>Gaurs Group</PageTitle>
+
+<div class="d-flex justify-content-center align-items-center poppins-regular mb-4 mt-3">
+    <div class="card shadow rounded col-12 col-md-9 col-lg-7 bg-white">
+        <div class="card-body">
+            <h4 class="card-title text-center" style="color:#262262;">Gaurs Registration Form</h4>
+            <hr class="green-dotted-line" />
+            <EditForm method="post" Model="clientDetails" OnValidSubmit="HandleSubmit" FormName="create" Enhance>
+                <DataAnnotationsValidator />
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group mt-2">
+                            <label for="clientName">Client Name <span class="text-danger fs-6">*</span></label>
+                            <InputText class="form-control" id="clientname" @bind-Value="clientDetails.ClientName"></InputText>
+                            <ValidationMessage For="() => clientDetails.ClientName" class="text-danger" />
+                        </div>
+
+
+                        <div class="form-group mt-2">
+                            <label for="clientEmail">Client Email Id <span class="text-danger fs-6">*</span></label>
+                            <InputText id="clientemailid" type="email" class="form-control" @bind-Value="clientDetails.ClientEmailId" />
+                            <ValidationMessage For="() => clientDetails.ClientEmailId" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="clientMobile">Client Mobile No. <span class="text-danger fs-6">*</span></label>
+                            <InputText id="clientMobile" type="tel" class="form-control" @bind-Value="clientDetails.ClientNumber" />
+                            <ValidationMessage For="() => clientDetails.ClientNumber" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="clientPan">Client Pan CARD No. <span class="text-danger fs-6">*</span></label>
+                            <InputText id="clientPan" class="form-control" @bind-Value="clientDetails.ClientPanNo" />
+                            <ValidationMessage For="() => clientDetails.ClientPanNo" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="clientAadhar">Client Aadhar Card No. <span class="text-danger fs-6">*</span></label>
+                            <InputText id="clientAadhar" class="form-control" @bind-Value="clientDetails.ClientAadharNo" />
+                            <ValidationMessage For="() => clientDetails.ClientAadharNo" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="cpName">Channel Partner Name</label>
+                            <InputText id="cpName" class="form-control" @bind-Value="clientDetails.CpName" />
+                            <ValidationMessage For="() => clientDetails.CpName" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="cpEmail">Channel Partner Email Id</label>
+                            <InputText id="cpEmail" type="email" class="form-control" @bind-Value="clientDetails.CpEmailId" />
+                            <ValidationMessage For="() => clientDetails.CpEmailId" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="cpMobile">Channel Partner Mobile No.</label>
+                            <InputText id="cpMobile" type="tel" class="form-control" @bind-Value="clientDetails.CpNumber" />
+                            <ValidationMessage For="() => clientDetails.CpNumber" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="cpCompany">Channel Partner RERA Number/ Gaur Employee ID</label>
+                            <InputText id="cpCompany" class="form-control" @bind-Value="clientDetails.CpCompanyNameWithRERA" />
+                            <ValidationMessage For="() => clientDetails.CpCompanyNameWithRERA" class="text-danger" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm">
+
+                        <div class="form-group mt-2">
+                            <label for="floorPreference">Select Floor Preference 1<span class="text-danger fs-6">*</span></label>
+                            <InputSelect id="areaPreference" class="form-control" @bind-Value="clientDetails.PreferFloors1">
+                                <option value="">Select Floor Preference 1</option>
+                                <option value="1-5">1-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="11-15">11-15</option>
+                                <option value="16-20">16-20 </option>
+                                <option value="21-25">21-25 </option>
+                                <option value="">26-30 </option>
+                                <option value="">31-34 </option>
+                            </InputSelect>
+                            <ValidationMessage For="() => clientDetails.PreferFloors1" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="floorPreference">Select Floor Preference 2<span class="text-danger fs-6">*</span></label>
+                            <InputSelect id="areaPreference" class="form-control" @bind-Value="clientDetails.PreferFloors1">
+                                <option value="">Select Floor Preference 2</option>
+                                <option value="1-5">1-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="11-15">11-15</option>
+                                <option value="16-20">16-20 </option>
+                                <option value="21-25">21-25 </option>
+                                <option value="">26-30 </option>
+                                <option value="">31-34 </option>
+                            </InputSelect>
+                            <ValidationMessage For="() => clientDetails.PreferFloors1" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="floorPreference">Select Floor Preference 3<span class="text-danger fs-6">*</span></label>
+                            <InputSelect id="areaPreference" class="form-control" @bind-Value="clientDetails.PreferFloors1">
+                                <option value="">Select Floor Preference 3</option>
+                                <option value="1-5">1-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="11-15">11-15</option>
+                                <option value="16-20">16-20 </option>
+                                <option value="21-25">21-25 </option>
+                                <option value="">26-30 </option>
+                                <option value="">31-34 </option>
+                            </InputSelect>
+                            <ValidationMessage For="() => clientDetails.PreferFloors1" class="text-danger" />
+                        </div>
+
+                        <!--
+                        <div class="form-group mt-2">
+                            <select onchange="SelectedFloors" multiple>
+                                <option value="1-5">1-5 </option>
+                                <option value="6-10">6-10 </option>
+                                <option value="11-15">11-15 </option>
+                                <option value="16-20">16-20 </option>
+                                <option value="21-25">21-25 </option>
+                                <option value="">26-30 </option>
+                                <option value="">31-34 </option>
+                            </select>
+                            <small class="form-text text-muted">You can select up to 3 preferred floors.</small>
+                        </div>
+                        -->
+
+                        <div class="form-group mt-2">
+                            <label for="areaPreference">Select Area Preference <span class="text-danger fs-6">*</span></label>
+                            <InputSelect id="areaPreference" class="form-control" @bind-Value="clientDetails.AreaPreference">
+                                <option value="">Select Area Preference</option>
+                                <option value="2300 Sqft T">2300 Sqft T</option>
+                                <option value="2800 Sqft T">2800 Sqft T</option>
+                                <option value="3500 Sqft T">3500 Sqft T</option>
+                            </InputSelect>
+                            <ValidationMessage For="() => clientDetails.AreaPreference" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="bankName">Bank Name</label>
+                            <InputText id="bankName" class="form-control" @bind-Value="clientDetails.BankName" />
+                            <ValidationMessage For="() => clientDetails.BankName" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="chequeNumber">Cheque Number</label>
+                            <InputText id="chequeNumber" class="form-control" @bind-Value="clientDetails.ChequeNumber" />
+                            <ValidationMessage For="() => clientDetails.ChequeNumber" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="chequeDate">Cheque Date</label>
+                            <InputDate id="chequeDate" class="form-control" @bind-Value="clientDetails.ChequeDate" />
+                            <ValidationMessage For="() => clientDetails.ChequeDate" class="text-danger" />
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="chequeAmount">Cheque Amount</label>
+                            <InputNumber id="chequeAmount" class="form-control" @bind-Value="clientDetails.ChequeAmount" />
+                            <ValidationMessage For="() => clientDetails.ChequeAmount" class="text-danger" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success mt-3">Submit</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+@code {
+    [SupplyParameterFromForm]
+    public Client_Details clientDetails { get; set; } = new();
+
+    
+
+    private async Task HandleSubmit(EditContext context)
+    {
+
+        
+
+        DB.ClientDetails.Add(clientDetails);
+        await DB.SaveChangesAsync();
+
+        // Add further form submission logic here, such as displaying a success message or redirecting
+        NavigationManager.NavigateTo("/success");
+    }
+
+
+}

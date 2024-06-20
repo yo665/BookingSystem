@@ -11,5 +11,6 @@ namespace BookingSystem.Data
         }
 
         public DbSet<Client_Details> ClientDetails { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
     }
 }

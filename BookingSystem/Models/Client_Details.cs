@@ -32,33 +32,41 @@ namespace BookingSystem.Models
         [Required(ErrorMessage = "Select at least one preferred floor")]
         public string PreferFloors1 { get; set; }
 
-        public string PreferFloors2 { get; set; }
+        public string? PreferFloors2 { get; set; } = null;
 
-        public string PreferFloors3 { get; set; }
+        public string? PreferFloors3 { get; set; } = null;
 
         [Required(ErrorMessage = "Area Preference is required")]
         public string? AreaPreference { get; set; }
 
         // Channel Partner details
-        public string? CpName { get; set; }
+        public string? CpName { get; set; } = null;
 
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string? CpEmailId { get; set; }
+        public string? CpEmailId { get; set; } = null;
 
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "Invalid Phone Number")]
-        public string? CpNumber { get; set; }
+        public string? CpNumber { get; set; } = null;
 
         [Required(ErrorMessage = "RERA Number is required")]
-        public string? CpCompanyNameWithRERA { get; set; }
+        public string CpCompanyNameWithRERA { get; set; }
 
         // Bank details
-        public string? BankName { get; set; }
+        public string? BankName { get; set; } = null;
 
-        public string? ChequeNumber { get; set; }
+        public string? ChequeNumber { get; set; } = null;
 
-        [DataType(DataType.Date)]
-        public DateTime? ChequeDate { get; set; }
+        public DateTime? ChequeDate { get; set; } = null;
 
-        public decimal? ChequeAmount { get; set; }
+        public decimal? ChequeAmount { get; set; } = null;
+
+        // Created DateTime
+        [DataType(DataType.DateTime)]
+        [Required]
+        public DateTime CreatedDateTime { get; set; }
+
+        // Constructor
+        public Client_Details()
+        {
+            CreatedDateTime = DateTime.Now;
+        }
     }
 }

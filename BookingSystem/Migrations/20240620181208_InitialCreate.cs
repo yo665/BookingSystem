@@ -23,17 +23,18 @@ namespace BookingSystem.Migrations
                     ClientPanNo = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     ClientAadharNo = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     PreferFloors1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PreferFloors2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PreferFloors3 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PreferFloors2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PreferFloors3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AreaPreference = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CpName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CpEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CpNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    CpNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CpCompanyNameWithRERA = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ChequeNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ChequeDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ChequeAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                    ChequeAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
